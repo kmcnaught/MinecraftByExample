@@ -42,6 +42,10 @@ public class EmojiItem extends Item {
     final int MAX_FOOD_LEVEL = 20;
     int foodlevel = playerEntity.getFoodStats().getFoodLevel();
 
+    if (playerEntity.isCreative()) {
+    	foodlevel = 10; // we want equal chance in creative mode
+    }    
+
     double happyChance = foodlevel / (MAX_FOOD_LEVEL * 1.1);
     Random random = new Random();
     EmojiMood mood = random.nextDouble() < happyChance ? EmojiMood.HAPPY : EmojiMood.GRUMPY;
